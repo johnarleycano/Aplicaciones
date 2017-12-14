@@ -13,7 +13,21 @@ Class Inicio_model extends CI_Model{
 	{
 		switch ($tipo) {
 			case "aplicaciones":
-				return $this->db->order_by("Nombre")->get("aplicaciones")->result();
+				return $this->db
+				->where(array("Estado" => 1, "Fk_Id_Proyecto" => $id))
+				->order_by("Nombre")
+				->get("aplicaciones")->result();
+			break;
+
+			case "proyecto":
+				return $this->db
+				->where("Pk_Id", $id)
+				->get("proyectos")->row();
+			break;
+
+			case "proyectos":
+				return $this->db
+				->get("proyectos")->result();
 			break;
 		}
 	}

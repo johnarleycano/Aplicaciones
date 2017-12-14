@@ -32,6 +32,30 @@ class Inicio extends CI_Controller {
         $this->data['contenido_principal'] = 'inicio/index';
         $this->load->view('core/template', $this->data);
 	}
+
+    /**
+     * Carga la interfaz según el tipo
+     * @return void 
+     */
+    function cargar_interfaz()
+    {
+        //Se valida que la peticion venga mediante ajax y no mediante el navegador
+        if($this->input->is_ajax_request()){
+            // Dependiendo del tipo
+            switch ($this->input->post('tipo')) {
+                case "aplicaciones":
+                    // Se recibe los datos por POST
+                    $this->data["id_proyecto"] = $this->input->post("id_proyecto");
+
+                    // Se carga la vista
+                    $this->load->view('inicio/listar', $this->data);
+                break;
+            } // switch tipo
+        }else{
+            //Si la peticion fue hecha mediante navegador, se redirecciona a la pagina de inicio
+            redirect('');
+        } // if
+    } // cargar_interfaz
 }
 /* Fin del archivo Inicio.php */
 /* Ubicación: ./application/controllers/Inicio.php */

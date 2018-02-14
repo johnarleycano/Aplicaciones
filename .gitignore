@@ -1,3 +1,14 @@
+# Creado por https://www.gitignore.io/api/codeigniter
 
-application/config/config.php
-application/config/database.php
+### Archivos ###
+/index.php
+commits.txt
+package-lock.json
+\.htaccess
+
+### Carpetas ###
+archivos/documentacion/
+user_guide/
+application/config/
+
+# Fin de https://www.gitignore.io/api/codeigniter

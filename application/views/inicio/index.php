@@ -6,14 +6,6 @@
     z-index: 1030;
     " uk-navbar>
     <div class="uk-navbar-center">
-        <!-- <div class="uk-navbar-center-left">
-            <div>
-                <ul class="uk-navbar-nav">
-                    <li><a href="#">Suite de</a></li>
-                </ul>
-            </div>
-        </div> -->
-        
         <!-- Recorrido de los proyectos -->
         <?php foreach ($this->inicio_model->obtener("proyectos") as $proyecto) { ?>
             <!-- Logos -->

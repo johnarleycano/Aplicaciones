@@ -21,6 +21,11 @@ class Sesion extends CI_Controller {
 	function __construct() {
         parent::__construct();
 
+        // Si no ha iniciado sesión, se redirige a la aplicación de configuración
+        if(!$this->session->userdata('Pk_Id_Usuario')){
+            redirect("sesion/cerrar");
+        }
+
         // Carga de modelos
         $this->load->model(array('configuracion_model', 'sesion_model'));
     }
@@ -35,8 +40,16 @@ class Sesion extends CI_Controller {
 	{
         //Se valida que la peticion venga mediante ajax y no mediante el navegador
         if($this->input->is_ajax_request()){
-			// Se cargan los datos a la sesión
-	        $this->session->set_userdata($this->input->post("datos_usuario"));
+        	// Se reciben los datos vía post
+        	$datos = $this->input->post("datos_usuario");
+
+        	// Se cargan los datos a la sesión
+	        $this->session->set_userdata($datos);
+
+			$arreglo = json_encode($datos, JSON_UNESCAPED_UNICODE);
+	        $archivo = fopen("sesion.json", 'w');
+			fwrite($archivo, $arreglo);
+			fclose($archivo);
 
 	        // Se inserta el registro de logs enviando tipo de log y dato adicional si corresponde
             // $this->logs_model->insertar(1);
@@ -73,6 +86,11 @@ class Sesion extends CI_Controller {
         // $this->logs_model->insertar(2);
         
         redirect("sesion/iniciar/".$this->config->item("id_aplicacion"));
+	}
+
+	function destruir()
+	{
+		// unlink("sesion.json");
 	}
 
 	/**

@@ -63,7 +63,7 @@ $aplicacion = $this->configuracion_model->obtener("aplicacion", $id_aplicacion);
 
 			// Se consulta los datos del usuario
             usuario = ajax("<?php echo site_url('sesion/validar'); ?>", {"usuario": $("#login").val(), "clave": $("#clave").val()}, 'JSON');
-            imprimir(usuario, "tabla");
+            // imprimir(usuario, "tabla");
 
             // Si no existe el usuario con esas credenciales
             if (!usuario) {
@@ -91,11 +91,11 @@ $aplicacion = $this->configuracion_model->obtener("aplicacion", $id_aplicacion);
 
             	return false;
 			}
-
+			
 			// Se inicia la sesión
-			ajax("<?php echo site_url('sesion/conectar'); ?>", {"datos_usuario": usuario}, 'html');
+			ajax("<?php echo site_url('sesion/conectar'); ?>", {"datos_usuario": usuario, "redirect": $("#redirect").val(), "url": "<?php echo $aplicacion->Url; ?>"}, 'HTML');
 
-			redireccionar("<?php echo $aplicacion->Url; ?>");
+			window.location.replace(`<?php echo $aplicacion->Url; ?>index.php/sesion`)
 
 			return false;
 		});

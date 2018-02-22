@@ -1,14 +1,16 @@
 <footer style="
-    background-color: #808080;
+    background: white;
     bottom: 0;
-    color: white;
-    font-size: 0.7em;
+    color: gray;
+    font-size: 0.8em;
     left: 0;
-	position: fixed;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    position: fixed;
     text-align: center;
     width: 100%;
 ">
-	Sistema de configuración de aplicaciones | Devimed S.A. | <i>Versión <?php echo version(); ?></i>
+	Sistema de configuración de aplicaciones | <a href="http://devimed.com.co/" target="_blank">Devimed S.A.</a> | <i>Versión <b><?php echo version(); ?></b></i>
 </footer>
 
 <?php

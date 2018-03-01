@@ -18,7 +18,7 @@ class Inicio extends CI_Controller {
         parent::__construct();
 
         // Carga de modelos
-        $this->load->model(array('inicio_model'));
+        // $this->load->model(array('inicio_model'));
     }
 
     /**
@@ -28,9 +28,7 @@ class Inicio extends CI_Controller {
      */
 	function index()
 	{
-		$this->data['titulo'] = 'Inicio';
-        $this->data['contenido_principal'] = 'inicio/index';
-        $this->load->view('core/template', $this->data);
+		
 	}
 
     /**

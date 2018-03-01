@@ -1,10 +1,10 @@
-<?php $proyecto = $this->inicio_model->obtener("proyecto", $id_proyecto); ?>
+<?php $proyecto = $this->aplicaciones_model->obtener("proyecto", $id_proyecto); ?>
 <center class="ui label" style="margin-top: 5.5em;">
     <b>Aplicaciones para <?php echo $proyecto->Nombre; ?></b>
 </center>
 
 <div class="uk-child-width-1-2@m" uk-grid uk-scrollspy="cls: uk-animation-fade; target: > div > .uk-card; delay: 500; repeat: true">
-    <?php foreach ($this->inicio_model->obtener("aplicaciones", $id_proyecto) as $aplicacion) { ?>
+    <?php foreach ($this->aplicaciones_model->obtener("aplicaciones", $id_proyecto) as $aplicacion) { ?>
 	    <div>
 	        <div class="uk-card uk-card-default uk-card-body">
 	        	<article class="uk-comment">

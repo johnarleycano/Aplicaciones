@@ -78,7 +78,7 @@
 													</label>
 												</p>
 
-												<button type="submit" class="btn waves-effect waves-light btn-signup">Regístrate</button>
+												<button type="submit" class="btn waves-effect waves-light btn-signup">Descargar</button>
 											</div>
 										</form>
 									</div>

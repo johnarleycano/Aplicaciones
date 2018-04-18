@@ -37,7 +37,29 @@
 							<!-- Contenedor 2 -->
 							<div class="col s12 m8">
 								<div class="row">
-									<div class="signup-box">
+									<div class="signup-box" id="exito" hidden>
+										<h1 class="titulo">Certificados disponibles</h1>
+										
+										<form class="signup-form">
+											<h2>Los datos fueron registrados exitosamente. Ahora puede descargar los certificados:</h2>
+											
+											<div class="divider"></div>
+
+											<div class="section">
+												<div class="row">
+      												<div class="col s12">
+      													<a class="waves-effect waves-light btn-large" href="http://www.devimed.com.co/wp-content/uploads/2018/04/Certificado-de-calibracion-Manantiales-2018.pdf" target="blank" download>Báscula Manantiales</a>
+      												</div>
+  												</div>
+												<!-- <div class="row">
+      												<div class="col s12">
+      													<a class="waves-effect waves-light btn-large" href="#">Báscula 2</a>
+      												</div>
+  												</div> -->
+											</div>
+										</form>
+									</div>
+									<div class="signup-box" id="formulario">
 										<!-- <img src="<?php // echo base_url(); ?>img/logos/devimed.png" class="logo"> -->
 										<h1 class="titulo">Certificado de báscula</h1>
 
@@ -128,8 +150,25 @@
 						return false;
 					}
 
+					datos = {
+						"Nombre": $("#nombre").val(),
+						"Identificacion": $("#identificacion").val(),
+						"Genero": $("#genero").val(),
+						"Email": $("#email").val(),
+						"Telefono":  $("#telefono").val(),
+						"Fecha": "<?php echo date('Y-m-d H:i:s'); ?>",
+					}
+					
+					// Se guarda el registro en base de datos
+            		registro = ajax("<?php echo site_url('formas/insertar'); ?>", {"tipo": "usuario_registrado", "datos": datos}, 'JSON')
 
+            		if(registro) {
+						$("#formulario").hide()
+						$("#exito").removeAttr('hidden')
+            		}
 
+            		cerrar_notificaciones()
+					imprimir_notificacion("Datos ingresados correctamente.", "success")
 
 					return false
 				})

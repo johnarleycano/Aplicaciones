@@ -37,8 +37,30 @@
 							<!-- Contenedor 2 -->
 							<div class="col s12 m8">
 								<div class="row">
-									<div class="signup-box">
-										<img src="<?php echo base_url(); ?>img/logos/devimed.png" class="logo">
+									<div class="signup-box" id="exito" hidden>
+										<h1 class="titulo">Certificados disponibles</h1>
+										
+										<form class="signup-form">
+											<h2>Los datos fueron registrados exitosamente. Ahora puede descargar los certificados:</h2>
+											
+											<div class="divider"></div>
+
+											<div class="section">
+												<div class="row">
+      												<div class="col s12">
+      													<a class="waves-effect waves-light btn-large" href="http://www.devimed.com.co/wp-content/uploads/2018/04/Certificado-de-calibracion-Manantiales-2018.pdf" target="blank" download>Báscula Manantiales</a>
+      												</div>
+  												</div>
+												<!-- <div class="row">
+      												<div class="col s12">
+      													<a class="waves-effect waves-light btn-large" href="#">Báscula 2</a>
+      												</div>
+  												</div> -->
+											</div>
+										</form>
+									</div>
+									<div class="signup-box" id="formulario">
+										<!-- <img src="<?php // echo base_url(); ?>img/logos/devimed.png" class="logo"> -->
 										<h1 class="titulo">Certificado de báscula</h1>
 
 										<form class="signup-form">
@@ -49,16 +71,16 @@
 											<div class="section">
 												<div class="input-field">
 													<label for="nombre">Nombre completo</label>
-													<input type="text" id="nombre">
+													<input type="text" id="nombre" title="Nombre">
 												</div>
 
 												<div class="input-field">
 													<label for="identificacion">Número de identificación</label>
-													<input type="text" id="identificacion">
+													<input type="text" id="identificacion" title="Número de identificación">
 												</div>
 
 												<div class="input-field">
-													<select id="genero">
+													<select id="genero" title="Género">
 														<option value="" disabled selected>Elija un género</option>
 														<option value="1">Femenino</option>
 														<option value="2">Masculino</option>
@@ -66,15 +88,20 @@
 												</div>
 
 												<div class="input-field">
-													<input id="email" type="email" class="validate">
+													<input id="email" type="email" class="validate" title="Correo electrónico">
 													<label for="email">Correo electrónico</label>
 													<span class="helper-text" data-error="Formato de correo no válido" data-success=""></span>
 												</div>
 
+												<div class="input-field">
+													<label for="telefono">Número telefónico</label>
+													<input type="text" id="telefono" title="Número telefónico">
+												</div>
+
 												<p>
 													<label>
-														<input type="checkbox" />
-														<span>Acepto <a href="#">términos y condiciones</a></span>
+														<input type="checkbox" id="politica_datos" />
+														<span>He leido y acepto la <a href="http://www.devimed.com.co/wp-content/uploads/2018/04/001-Politica-de-Tratamiento-de-Datos-Devimed-Version-001.pdf" onclick="window.open(this.href, '_blank', 'width=720, height=480'); return false;">política de tratamiento de datos</a></span>
 													</label>
 												</p>
 
@@ -102,8 +129,11 @@
 					imprimir_notificacion("<div uk-spinner></div> Validando la información...")
 
 					campos_obligatorios = {
-						"login": $("#login").val(),
-						"clave": $("#clave").val()
+						"nombre": $("#nombre").val(),
+						"identificacion": $("#identificacion").val(),
+						"genero": $("#genero").val(),
+						"email": $("#email").val(),
+						"telefono": $("#telefono").val(),
 					}
 					// imprimir(campos_obligatorios);
 					
@@ -111,6 +141,34 @@
 					if(validar_campos_obligatorios(campos_obligatorios)){
 						return false;
 					}
+
+					// Si no ha aceptado la política de tratamiento de datos
+					if (!$("#politica_datos").is(':checked')) {
+						cerrar_notificaciones();
+						imprimir_notificacion(`<span uk-icon='icon: bolt'></span> Por favor acepte que ha leído la política de tratamiento de datos` , "danger");
+
+						return false;
+					}
+
+					datos = {
+						"Nombre": $("#nombre").val(),
+						"Identificacion": $("#identificacion").val(),
+						"Genero": $("#genero").val(),
+						"Email": $("#email").val(),
+						"Telefono":  $("#telefono").val(),
+						"Fecha": "<?php echo date('Y-m-d H:i:s'); ?>",
+					}
+					
+					// Se guarda el registro en base de datos
+            		registro = ajax("<?php echo site_url('formas/insertar'); ?>", {"tipo": "usuario_registrado", "datos": datos}, 'JSON')
+
+            		if(registro) {
+						$("#formulario").hide()
+						$("#exito").removeAttr('hidden')
+            		}
+
+            		cerrar_notificaciones()
+					imprimir_notificacion("Datos ingresados correctamente.", "success")
 
 					return false
 				})

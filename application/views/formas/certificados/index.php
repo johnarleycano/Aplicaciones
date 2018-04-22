@@ -51,11 +51,11 @@
       													<a class="waves-effect waves-light btn-large" href="http://www.devimed.com.co/wp-content/uploads/2018/04/Certificado-de-calibracion-Manantiales-2018.pdf" target="blank" download>Báscula Manantiales</a>
       												</div>
   												</div>
-												<!-- <div class="row">
+												<div class="row">
       												<div class="col s12">
-      													<a class="waves-effect waves-light btn-large" href="#">Báscula 2</a>
+      													<a class="waves-effect waves-light btn-large" href="http://www.devimed.com.co/wp-content/uploads/2018/04/images.pdf" target="blank" download>Báscula Puerto Triunfo</a>
       												</div>
-  												</div> -->
+  												</div>
 											</div>
 										</form>
 									</div>

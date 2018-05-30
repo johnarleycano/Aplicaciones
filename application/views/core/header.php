@@ -7,7 +7,7 @@
 <!-- Scripts -->
 <script src="<?php echo base_url(); ?>js/jquery-3.2.1.min.js"></script>
 
-<?php if(ENVIRONMENT === 'development' || ENVIRONMENT === 'mediciones') { ?>
+<?php if(ENVIRONMENT === 'development' || ENVIRONMENT === 'mediciones' || ENVIRONMENT === 'bascula') { ?>
 	<!-- Estilos -->
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/uikit.css" />
 	<link rel="stylesheet" href="<?php echo base_url(); ?>css/fontawesome-all.css" />

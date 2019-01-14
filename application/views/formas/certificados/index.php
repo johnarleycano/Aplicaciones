@@ -48,14 +48,17 @@
 											<div class="section">
 												<div class="row">
       												<div class="col s12">
-      													<a class="waves-effect waves-light btn-large" href="http://www.devimed.com.co/wp-content/uploads/2018/04/Certificado-de-calibracion-Manantiales-2018.pdf" target="blank" download>Báscula Manantiales</a>
+      													<a class="waves-effect waves-light btn-large" href="<?php echo base_url().'archivos/certificados/Certificado-de-calibracion-Manantiales-2018-02.pdf'; ?>" target="blank" download>Báscula Manantiales</a>
       												</div>
   												</div>
-												<!-- <div class="row">
+
+												<div class="row">
       												<div class="col s12">
-      													<a class="waves-effect waves-light btn-large" href="http://www.devimed.com.co/wp-content/uploads/2018/04/Certificado-de-calibracion-Puerto-Triunfo-2018.pdf" target="blank" download>Báscula Puerto Triunfo</a>
+      													<div class="col s12">
+      													<a class="waves-effect waves-light btn-large" href="<?php echo base_url().'archivos/certificados/Conformidad-Industria-Comercio-01.pdf'; ?>" target="blank" download>Conformidad - Industria y Comercio</a>
       												</div>
-  												</div> -->
+      												</div>
+  												</div>
 											</div>
 										</form>
 									</div>
@@ -71,7 +74,7 @@
 											<div class="section">
 												<div class="input-field">
 													<label for="nombre">Nombre completo</label>
-													<input type="text" id="nombre" title="Nombre">
+													<input type="text" id="nombre" title="Nombre" autofocus>
 												</div>
 
 												<div class="input-field">

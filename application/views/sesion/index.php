@@ -94,8 +94,8 @@ $aplicacion = $this->configuracion_model->obtener("aplicacion", $id_aplicacion);
 			
 			// Se inicia la sesión
 			ajax("<?php echo site_url('sesion/conectar'); ?>", {"datos_usuario": usuario, "redirect": $("#redirect").val(), "url": "<?php echo $aplicacion->Url; ?>"}, 'HTML');
-
-			window.location.replace(`<?php echo $aplicacion->Url; ?>index.php/sesion`)
+			
+			window.location.replace(`<?php echo $aplicacion->Url; ?>/sesion`)
 
 			return false;
 		});

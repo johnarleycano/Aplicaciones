@@ -34,7 +34,7 @@ $config['id_aplicacion'] = 15;
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://deviapps.devimed.com.co/';
+$config['base_url'] = 'https://deviapps.devimed.com.co';
 
 /*
 |--------------------------------------------------------------------------
@@ -46,7 +46,7 @@ $config['base_url'] = 'http://deviapps.devimed.com.co/';
 | variable so that it is blank.	
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
